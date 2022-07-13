@@ -14,26 +14,26 @@ def print_squre_grid(values):
     print("\t     |     |")
     print("\n")
 
+    # Function to print the score-board
+def print_scoreboard(score_board):
+    print("--------------------------------")
+    print("            SCOREBOARD       ")
+    print("--------------------------------")
+ 
+    players = list(score_board.keys())
+    print("   ", players[0], "    ", score_board[players[0]])
+    print("   ", players[1], "    ", score_board[players[1]])
+ 
+    print("--------------------------------\n")
+
 # Function for a single game of Tic Tac Toe
 def single_game(cur_player):
  
     # Represents the Tic Tac Toe
     values = [' ' for x in range(9)]
      
-    # Stores the positions occupied by X and O
-    player_pos = {'X':[], 'O':[]}
-    # Stores the player who chooses X and O
-    cur_player = player1
     
-    # Stores the choice of players
-    player_choice = {'X' : "", 'O' : ""}
-    
-    # Stores the options
-    options = ['X', 'O']
-    
-    # Stores the scoreboard
-    score_board = {player1: 0, player2: 0}
-    
+
     if check_win(player_pos, cur_player):
         print_squre_grid(values)
         print("Player ", cur_player, " has won the game!!")     
@@ -97,23 +97,18 @@ def check_draw(player_pos):
     if len(player_pos['X']) + len(player_pos['O']) == 9:
         return True
     return False   
-    # Switch player moves
-    if cur_player == 'X':
-        cur_player = 'O'
-    else:
-        cur_player = 'X'
+    
 
-# Function to print the score-board
-def print_scoreboard(score_board):
-    print("--------------------------------")
-    print("            SCOREBOARD       ")
-    print("--------------------------------")
- 
-    players = list(score_board.keys())
-    print("   ", players[0], "    ", score_board[players[0]])
-    print("   ", players[1], "    ", score_board[players[1]])
- 
-    print("--------------------------------\n")
+
+    # Game Loop for a series of Tic Tac Toe
+    # The loop runs until the players quit 
+    while True:
+    
+        # Player choice Menu
+        print("Turn to choose for", cur_player)
+        print("Enter 1 for X")
+        print("Enter 2 for O")
+        print("Enter 3 to Quit")
 
 if __name__ == "__main__":
 
@@ -125,3 +120,22 @@ if __name__ == "__main__":
     player2 = input("Enter the name : ")
     print("\n")
     
+    # Stores the positions occupied by X and O
+    player_pos = {'X':[], 'O':[]}
+    # Stores the player who chooses X and O
+    cur_player = player1
+    
+    # Stores the choice of players
+    player_choice = {'X' : "", 'O' : ""}
+    
+    # Stores the options
+    options = ['X', 'O']
+    # Switch player moves
+    if cur_player == 'X':
+        cur_player = 'O'
+    else:
+        cur_player = 'X'
+    
+    # Stores the scoreboard
+    score_board = {player1: 0, player2: 0}
+    print_scoreboard(score_board)
